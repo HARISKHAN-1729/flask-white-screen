@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjustable White Screen</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background-color: #ffffff;
+            transition: background-color 0.5s;
+            font-family: 'Arial', sans-serif;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .color-button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.5s;
+        }
+        .color-button:active {
+            transform: scale(0.95);
+        }
+        .warm { background-color: #f5a623; }
+        .light-warm { background-color: #f8c471; }
+        .neutral { background-color: #ffffff; color: #333; }
+        .light-cool { background-color: #a9d0f5; }
+        .cool { background-color: #4a90e2; }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="color-button warm" onclick="changeColor('#f5a623')">Warm</button>
+        <button class="color-button light-warm" onclick="changeColor('#f8c471')">Light Warm</button>
+        <button class="color-button neutral" onclick="changeColor('#ffffff')">Neutral</button>
+        <button class="color-button light-cool" onclick="changeColor('#a9d0f5')">Light Cool</button>
+        <button class="color-button cool" onclick="changeColor('#4a90e2')">Cool</button>
+    </div>
+
+    <script>
+        function changeColor(color) {
+            // Change the background color of the body
+            document.body.style.backgroundColor = color;
+            
+            // Get all buttons and change their background color to match the selected color
+            const buttons = document.querySelectorAll('.color-button');
+            buttons.forEach(button => {
+                button.style.backgroundColor = color;
+                button.style.color = color === '#ffffff' ? '#333' : '#fff';
+            });
+        }
+    </script>
+</body>
+</html>
